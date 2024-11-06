@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrichment Class Comparison Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .filter-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .filter-container label {
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #cccccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enrichment Class Comparison Tool</h1>
+    <div class="filter-container">
+        <h3>Filter Options</h3>
+        <label for="age-group">Age Group:</label>
+        <select id="age-group">
+            <option value="">All</option>
+            <option value="3 years">3 years</option>
+            <option value="4 years">4 years</option>
+            <option value="5 years">5 years</option>
+            <option value="6 years">6 years</option>
+            <option value="2 years">2 years</option>
+            <option value="7 years">7 years</option>
+
+        </select>
+
+        <label for="type">Type of Enrichment:</label>
+        <select id="type">
+            <option value="">All</option>
+            <option value="English">English</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Arts">Arts</option>
+            <option value="science">science</option>
+
+        </select>
+
+        <label for="location">Location:</label>
+        <select id="location">
+            <option value="">All</option>
+            <option value="Central">Central</option>
+            <option value="East">East</option>
+            <option value="North-West">North-West</option>
+            <option value="West">West</option>
+            <option value="nan">nan</option>
+
+        </select>
+
+        <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <table id="classes-table">
+        <thead>
+            <tr>
+                <th>Age Group</th>
+                <th>Type of Enrichment</th>
+                <th>Service Provider</th>
+                <th>Programme Name</th>
+                <th>Why this Programme</th>
+                <th>Duration (mins)</th>
+                <th>Class Size</th>
+                <th>Cost per Class (SGD)</th>
+                <th>Location</th>
+                <th>Schedule</th>
+                <th>Contact Details</th>
+                <th>Enrollment Process</th>
+            </tr>
+        </thead>
+        <tbody id="classes-body">
+
+            <tr>
+                <td>3 years</td>
+                <td>English</td>
+                <td>Julia Gabriel</td>
+                <td>I Love Reading</td>
+                <td>I Love Reading is a reading readiness programme which motivates young children to discover the world of print through participation in drama activities, enabling each child to develop stronger vocabulary. Based on ‘The Alphabet Zoo’ book (created by Julia Gabriel) and its characters, I Love Reading begins the process of exposure that enables children to experience language holistically, heightening their literacy skills.</td>
+                <td>90</td>
+                <td>10</td>
+                <td>$30.52</td>
+                <td>Central</td>
+                <td>Availability Sat</td>
+                <td><br>583 Orchard Road, #04-00 Forum,<br>Singapore 238884<br>+65 6733 4322<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>English</td>
+                <td>Julia Gabriel</td>
+                <td>I Love Reading</td>
+                <td>I Love Reading is a reading readiness programme which motivates young children to discover the world of print through participation in drama activities, enabling each child to develop stronger vocabulary. Based on ‘The Alphabet Zoo’ book (created by Julia Gabriel) and its characters, I Love Reading begins the process of exposure that enables children to experience language holistically, heightening their literacy skills.</td>
+                <td>90</td>
+                <td>10</td>
+                <td>$30.00</td>
+                <td>Central</td>
+                <td>Availability Sat; Sun</td>
+                <td><br>583 Orchard Road, #04-00 Forum,<br>Singapore 238884<br>+65 6733 4322<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>Julia Gabriel</td>
+                <td>Let's Read and Write</td>
+                <td>Through experiential learning, Let’s Read & Write focuses on skills to improve both written and oral expression by developing communication, listening, literacy, cognitive, fine motor and creative skills. By working with carefully selected fiction and non-fiction texts, children develop an interest in reading and writing from a very young age.</td>
+                <td>90</td>
+                <td>10</td>
+                <td>$40.00</td>
+                <td>East</td>
+                <td>Availability Sat</td>
+                <td><br>4 Tampines Central 5, #05-03 Tampines Mall,<br>Singapore 529510<br>+65 6444 6735<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>English</td>
+                <td>Julia Gabriel</td>
+                <td>Let's Read and Write</td>
+                <td>Through experiential learning, Let’s Read & Write focuses on skills to improve both written and oral expression by developing communication, listening, literacy, cognitive, fine motor and creative skills. By working with carefully selected fiction and non-fiction texts, children develop an interest in reading and writing from a very young age.</td>
+                <td>90</td>
+                <td>10</td>
+                <td>$45.00</td>
+                <td>Central</td>
+                <td>Availability Sat; Sun</td>
+                <td><br>11 Bidadari Park Drive, #02-45 The Woodleigh Mall,<br>Singapore 367803<br>+65 6993 8851<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Language awareness is the first step in your child's learning process. It fosters their ability to understand others and communicate their needs. Our safe and nurturing environment promotes interaction and communication for children to build their social skills while strengthening their language capability.</td>
+                <td>90</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Language awareness is the first step in your child's learning process. It fosters their ability to understand others and communicate their needs. Our safe and nurturing environment promotes interaction and communication for children to build their social skills while strengthening their language capability.</td>
+                <td>90</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Language awareness is the first step in your child's learning process. It fosters their ability to understand others and communicate their needs. Our safe and nurturing environment promotes interaction and communication for children to build their social skills while strengthening their language capability.</td>
+                <td>90</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>North-West</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Guided by a structured approach, our Kindergarten 1 language classes focus on active learning and exploratory activities to hone essential linguistic skills such as phonics and sentence construction.  </td>
+                <td>90</td>
+                <td>10</td>
+                <td>$130.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Guided by a structured approach, our Kindergarten 1 language classes focus on active learning and exploratory activities to hone essential linguistic skills such as phonics and sentence construction.  </td>
+                <td>90</td>
+                <td>10</td>
+                <td>$130.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Guided by a structured approach, our Kindergarten 1 language classes focus on active learning and exploratory activities to hone essential linguistic skills such as phonics and sentence construction.  </td>
+                <td>90</td>
+                <td>10</td>
+                <td>$130.00</td>
+                <td>North-West</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>By exploring simple math concepts in everyday experiences, we help your child find logic and sense in math equations through hands-on activities and craft work.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>By exploring simple math concepts in everyday experiences, we help your child find logic and sense in math equations through hands-on activities and craft work.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>By exploring simple math concepts in everyday experiences, we help your child find logic and sense in math equations through hands-on activities and craft work.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>North-West</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>Going beyond building their fundamentals in math, our Kindergarten 1 Maths programme nurtures every child to be a confident and inquisitive learner who genuinely enjoys solving problems.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>Going beyond building their fundamentals in math, our Kindergarten 1 Maths programme nurtures every child to be a confident and inquisitive learner who genuinely enjoys solving problems.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>Going beyond building their fundamentals in math, our Kindergarten 1 Maths programme nurtures every child to be a confident and inquisitive learner who genuinely enjoys solving problems.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$112.00</td>
+                <td>North-West</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Our Kindergarten 2 English classes empower your child with the necessary reading, writing and communication skills to ensure their smooth transition to primary school.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$140.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Our Kindergarten 2 English classes empower your child with the necessary reading, writing and communication skills to ensure their smooth transition to primary school.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$140.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>English</td>
+                <td>The Learning Lab</td>
+                <td>English</td>
+                <td>Our Kindergarten 2 English classes empower your child with the necessary reading, writing and communication skills to ensure their smooth transition to primary school.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$140.00</td>
+                <td>North-West</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>With a focus on heuristics, our Kindergarten 2 Maths programme will equip your child with the knowledge and skills to solve word problems and lay a firm foundation in number concepts to prepare them for primary school.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$140.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>With a focus on heuristics, our Kindergarten 2 Maths programme will equip your child with the knowledge and skills to solve word problems and lay a firm foundation in number concepts to prepare them for primary school.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$140.00</td>
+                <td>Central</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>Mathematics</td>
+                <td>The Learning Lab</td>
+                <td>Mathematics</td>
+                <td>With a focus on heuristics, our Kindergarten 2 Maths programme will equip your child with the knowledge and skills to solve word problems and lay a firm foundation in number concepts to prepare them for primary school.</td>
+                <td>105</td>
+                <td>10</td>
+                <td>$140.00</td>
+                <td>North-West</td>
+                <td>Availability Mon; Wed; Fri; Sat</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>Phonics and Reading</td>
+                <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>Phonics and Reading</td>
+                <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>West</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>Phonics and Reading</td>
+                <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>Phonics and Reading</td>
+                <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>West</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>English P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>English P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>West</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>English P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>English P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>West</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>Mathematics</td>
+                <td>Mind Strecher</td>
+                <td>Mathematics P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>Mathematics P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>West</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>Mathematics</td>
+                <td>Mind Strecher</td>
+                <td>Mathematics P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>English</td>
+                <td>Mind Strecher</td>
+                <td>Mathematics P1 Preparatory</td>
+                <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
+                <td>60</td>
+                <td>15</td>
+                <td>$50.00</td>
+                <td>West</td>
+                <td>Availability Thu; Sat; Sun</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>Arts</td>
+                <td>We Art</td>
+                <td>Little Explorers</td>
+                <td>A Journey of Imagination: Each class kicks off with a captivating story about famous artists, sparking creativity and imagination in our young students.
+Diverse Artistic Adventures: Children can choose from various artistic mediums – drawing, painting, collage, and mixed media, to name a few.
+Skill Development: From the beginning of each term, we introduce diverse techniques, encouraging kids to create unique artworks as they learn and grow.</td>
+                <td>90</td>
+                <td>5</td>
+                <td>$52.00</td>
+                <td>Central</td>
+                <td>Availability shown on website</td>
+                <td>176 Orchard Road, CentrePoint, #04-02 Singapore 238843<br>+ 65 9128 9947<br>weart.sg</td>
+                <td>Book Trial Class Via Website</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>Arts</td>
+                <td>We Art</td>
+                <td>Little Explorers</td>
+                <td>A Journey of Imagination: Each class kicks off with a captivating story about famous artists, sparking creativity and imagination in our young students.
+Diverse Artistic Adventures: Children can choose from various artistic mediums – drawing, painting, collage, and mixed media, to name a few.
+Skill Development: From the beginning of each term, we introduce diverse techniques, encouraging kids to create unique artworks as they learn and grow.</td>
+                <td>90</td>
+                <td>5</td>
+                <td>$52.00</td>
+                <td>Central</td>
+                <td>Availability shown on website</td>
+                <td>176 Orchard Road, CentrePoint, #04-02 Singapore 238843<br>+ 65 9128 9947<br>weart.sg</td>
+                <td>Book Trial Class Via Website</td>
+            </tr>
+    
+            <tr>
+                <td>2 years</td>
+                <td>Arts</td>
+                <td>White Canvas Studio</td>
+                <td>Discoverer (level 1)</td>
+                <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
+                <td>60</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>3 years</td>
+                <td>Arts</td>
+                <td>White Canvas Studio</td>
+                <td>Discoverer (level 1)</td>
+                <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
+                <td>60</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>4 years</td>
+                <td>Arts</td>
+                <td>White Canvas Studio</td>
+                <td>Discoverer (level 1)</td>
+                <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
+                <td>60</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>5 years</td>
+                <td>Arts</td>
+                <td>White Canvas Studio</td>
+                <td>Discoverer (level 1)</td>
+                <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
+                <td>60</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>6 years</td>
+                <td>Arts</td>
+                <td>White Canvas Studio</td>
+                <td>Explorer (level 2)</td>
+                <td>Level 2 - The Explorer program is designed to provide a well-rounded artistic education, from foundational skills to advanced techniques, fostering creativity and expressive capabilities in students.</td>
+                <td>60</td>
+                <td>5</td>
+                <td>$50.00</td>
+                <td>Central</td>
+                <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
+                <td>Email to schedule a trial class</td>
+            </tr>
+    
+            <tr>
+                <td>7 years</td>
+                <td>science</td>
+                <td>science tuition</td>
+                <td>science tuition</td>
+                <td>nan</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>$nan</td>
+                <td>nan</td>
+                <td>nan</td>
+                <td>N/A</td>
+                <td>nan</td>
+            </tr>
+    
+        </tbody>
+    </table>
+
+    <script>
+        function applyFilters() {
+            const ageGroupFilter = document.getElementById('age-group').value;
+            const typeFilter = document.getElementById('type').value;
+            const locationFilter = document.getElementById('location').value;
+
+            const rows = document.querySelectorAll("#classes-table tbody tr");
+            rows.forEach(row => {
+                const ageGroup = row.cells[0].textContent;
+                const type = row.cells[1].textContent;
+                const location = row.cells[8].textContent;
+
+                const ageGroupMatch = ageGroupFilter === "" || ageGroup === ageGroupFilter;
+                const typeMatch = typeFilter === "" || type === typeFilter;
+                const locationMatch = locationFilter === "" || location === locationFilter;
+
+                if (ageGroupMatch && typeMatch && locationMatch) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
