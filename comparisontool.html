@@ -1,42 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enrichment Class Comparison Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 10px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8; /* Light background for a clean look */
+            color: #333; /* Dark gray text for readability */
+            line-height: 1.6;
         }
+
+        h1.banner {
+            background-color: #ff6900; /* Blue background for the banner */
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1.banner img {
+            margin-right: 20px;
+            height: 80px;
+        }
+
         .filter-container {
             background-color: #ffffff;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 8px;
             margin-bottom: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .filter-container label {
-            margin-right: 10px;
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff8c42; /* Orange accent color for call to action */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
         }
+
+        button:hover {
+            background-color: #e0763e;
+            transform: translateY(-2px);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         table, th, td {
-            border: 1px solid #cccccc;
+            border: 1px solid #dddddd;
         }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
+
         th {
             background-color: #e0e0e0;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
         }
-    </style>
+
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .filter-container, table, h1.banner {
+                padding: 15px;
+            }
+            h1.banner {
+                flex-direction: column;
+            }
+            h1.banner img {
+                margin-bottom: 15px;
+            }
+        }
+        .review-section {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .review-section form {
+        margin-bottom: 20px;
+    }
+    .review-section h4 {
+        margin-top: 20px;
+    }
+    #reviews-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    #reviews-list li {
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .review-section {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .review-section form {
+        margin-bottom: 20px;
+    }
+    .review-section h4, .review-section h5 {
+        margin-top: 20px;
+    }
+    .reviews-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .reviews-list li {
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .review-section {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .review-section form {
+        margin-bottom: 20px;
+    }
+    .review-section h4, .review-section h5 {
+        margin-top: 20px;
+    }
+    .reviews-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .reviews-list li {
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .view-reviews-section {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .view-reviews-section button {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .view-reviews-section button:hover {
+        background-color: #0056b3;
+    }
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZ933PHZ58"></script>
 <script>
@@ -46,13 +198,13 @@
 
   gtag('config', 'G-SZ933PHZ58');
 </script>
-
 </head>
 <body>
     <h1 class="banner">
-        <img src="logo.png" alt="Logo" style="vertical-align: middle; margin-right: 60px; height: 150px;">
+        <img src="logo.png" alt="Logo">
         Enrichment Class Comparison Tool
     </h1>
+
     <div class="filter-container">
         <h3>Select your preference</h3>
         <label for="age-group">Age Group:</label>
@@ -63,18 +215,14 @@
             <option value="4 years">4 years</option>
             <option value="5 years">5 years</option>
             <option value="6 years">6 years</option>
-            
         </select>
-
         <label for="type">Type of Enrichment:</label>
         <select id="type">
             <option value="">All</option>
             <option value="English">English</option>
             <option value="Mathematics">Mathematics</option>
             <option value="Arts">Arts</option>
-
         </select>
-
         <label for="location">Location:</label>
         <select id="location">
             <option value="">All</option>
@@ -82,11 +230,9 @@
             <option value="East">East</option>
             <option value="North-West">North-West</option>
             <option value="West">West</option>
-        
-
         </select>
-
         <button onclick="applyFilters()">Apply Filters</button>
+        <button onclick="clearFilters()">Clear Filters</button>
     </div>
 
     <table id="classes-table">
@@ -97,30 +243,29 @@
                 <th>Service Provider</th>
                 <th>Programme Name</th>
                 <th>Why this Programme</th>
-                <th>Duration (mins)</th>
-                <th>Class Size</th>
                 <th>Cost per Class (SGD)</th>
                 <th>Location</th>
+                <th>Class Size</th>
+                <th>Duration (mins)</th>
                 <th>Schedule</th>
                 <th>Contact Details</th>
                 <th>Enrollment Process</th>
             </tr>
         </thead>
         <tbody id="classes-body">
-
             <tr>
                 <td>3 years</td>
                 <td>English</td>
                 <td>Julia Gabriel</td>
                 <td>I Love Reading</td>
                 <td>I Love Reading is a reading readiness programme which motivates young children to discover the world of print through participation in drama activities, enabling each child to develop stronger vocabulary. Based on ‘The Alphabet Zoo’ book (created by Julia Gabriel) and its characters, I Love Reading begins the process of exposure that enables children to experience language holistically, heightening their literacy skills.</td>
-                <td>90</td>
-                <td>10</td>
                 <td>$30.52</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Sat</td>
-                <td><br>583 Orchard Road, #04-00 Forum,<br>Singapore 238884<br>+65 6733 4322<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
-                <td>Email to schedule a trial class</td>
+                <td><br>583 Orchard Road, #04-00 Forum,<br>Singapore 238884<br>+65 6733 4322<br><br>www.juliagabriel.com</td>
+                <td><a href="mailto:enrichment@juliagabriel.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -129,13 +274,13 @@
                 <td>Julia Gabriel</td>
                 <td>I Love Reading</td>
                 <td>I Love Reading is a reading readiness programme which motivates young children to discover the world of print through participation in drama activities, enabling each child to develop stronger vocabulary. Based on ‘The Alphabet Zoo’ book (created by Julia Gabriel) and its characters, I Love Reading begins the process of exposure that enables children to experience language holistically, heightening their literacy skills.</td>
-                <td>90</td>
-                <td>10</td>
                 <td>$30.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>90</td>  
                 <td>Availability Sat; Sun</td>
-                <td><br>583 Orchard Road, #04-00 Forum,<br>Singapore 238884<br>+65 6733 4322<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
-                <td>Email to schedule a trial class</td>
+                <td><br>583 Orchard Road, #04-00 Forum,<br>Singapore 238884<br>+65 6733 4322<br><br>www.juliagabriel.com</td>
+                <td><a href="mailto:enrichment@juliagabriel.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -144,13 +289,13 @@
                 <td>Julia Gabriel</td>
                 <td>Let's Read and Write</td>
                 <td>Through experiential learning, Let’s Read & Write focuses on skills to improve both written and oral expression by developing communication, listening, literacy, cognitive, fine motor and creative skills. By working with carefully selected fiction and non-fiction texts, children develop an interest in reading and writing from a very young age.</td>
-                <td>90</td>
-                <td>10</td>
                 <td>$40.00</td>
                 <td>East</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Sat</td>
-                <td><br>4 Tampines Central 5, #05-03 Tampines Mall,<br>Singapore 529510<br>+65 6444 6735<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
-                <td>Email to schedule a trial class</td>
+                <td><br>4 Tampines Central 5, #05-03 Tampines Mall,<br>Singapore 529510<br>+65 6444 6735<br><br>www.juliagabriel.com</td>
+                <td><a href="mailto:enrichment@juliagabriel.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -159,13 +304,13 @@
                 <td>Julia Gabriel</td>
                 <td>Let's Read and Write</td>
                 <td>Through experiential learning, Let’s Read & Write focuses on skills to improve both written and oral expression by developing communication, listening, literacy, cognitive, fine motor and creative skills. By working with carefully selected fiction and non-fiction texts, children develop an interest in reading and writing from a very young age.</td>
-                <td>90</td>
-                <td>10</td>
                 <td>$45.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Sat; Sun</td>
-                <td><br>11 Bidadari Park Drive, #02-45 The Woodleigh Mall,<br>Singapore 367803<br>+65 6993 8851<br>enrichment@juliagabriel.com<br>www.juliagabriel.com</td>
-                <td>Email to schedule a trial class</td>
+                <td><br>11 Bidadari Park Drive, #02-45 The Woodleigh Mall,<br>Singapore 367803<br>+65 6993 8851<br><br>www.juliagabriel.com</td>
+                <td><a href="mailto:enrichment@juliagabriel.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -174,13 +319,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Language awareness is the first step in your child's learning process. It fosters their ability to understand others and communicate their needs. Our safe and nurturing environment promotes interaction and communication for children to build their social skills while strengthening their language capability.</td>
-                <td>90</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -189,13 +334,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Language awareness is the first step in your child's learning process. It fosters their ability to understand others and communicate their needs. Our safe and nurturing environment promotes interaction and communication for children to build their social skills while strengthening their language capability.</td>
-                <td>90</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -204,13 +349,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Language awareness is the first step in your child's learning process. It fosters their ability to understand others and communicate their needs. Our safe and nurturing environment promotes interaction and communication for children to build their social skills while strengthening their language capability.</td>
-                <td>90</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>North-West</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -219,13 +364,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Guided by a structured approach, our Kindergarten 1 language classes focus on active learning and exploratory activities to hone essential linguistic skills such as phonics and sentence construction.  </td>
-                <td>90</td>
-                <td>10</td>
                 <td>$130.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -234,13 +379,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Guided by a structured approach, our Kindergarten 1 language classes focus on active learning and exploratory activities to hone essential linguistic skills such as phonics and sentence construction.  </td>
-                <td>90</td>
-                <td>10</td>
                 <td>$130.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -249,13 +394,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Guided by a structured approach, our Kindergarten 1 language classes focus on active learning and exploratory activities to hone essential linguistic skills such as phonics and sentence construction.  </td>
-                <td>90</td>
-                <td>10</td>
                 <td>$130.00</td>
                 <td>North-West</td>
+                <td>10</td>
+                <td>90</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -264,13 +409,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>By exploring simple math concepts in everyday experiences, we help your child find logic and sense in math equations through hands-on activities and craft work.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -279,13 +424,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>By exploring simple math concepts in everyday experiences, we help your child find logic and sense in math equations through hands-on activities and craft work.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -294,13 +439,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>By exploring simple math concepts in everyday experiences, we help your child find logic and sense in math equations through hands-on activities and craft work.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>North-West</td>
+                <td>10</td>
+                <td>105</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -309,13 +454,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>Going beyond building their fundamentals in math, our Kindergarten 1 Maths programme nurtures every child to be a confident and inquisitive learner who genuinely enjoys solving problems.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -324,13 +469,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>Going beyond building their fundamentals in math, our Kindergarten 1 Maths programme nurtures every child to be a confident and inquisitive learner who genuinely enjoys solving problems.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -339,13 +484,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>Going beyond building their fundamentals in math, our Kindergarten 1 Maths programme nurtures every child to be a confident and inquisitive learner who genuinely enjoys solving problems.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$112.00</td>
                 <td>North-West</td>
+                <td>10</td>
+                <td>105</td>
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -354,13 +499,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Our Kindergarten 2 English classes empower your child with the necessary reading, writing and communication skills to ensure their smooth transition to primary school.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$140.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>  
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -369,13 +514,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Our Kindergarten 2 English classes empower your child with the necessary reading, writing and communication skills to ensure their smooth transition to primary school.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$140.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>  
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -384,13 +529,13 @@
                 <td>The Learning Lab</td>
                 <td>English</td>
                 <td>Our Kindergarten 2 English classes empower your child with the necessary reading, writing and communication skills to ensure their smooth transition to primary school.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$140.00</td>
                 <td>North-West</td>
+                <td>10</td>
+                <td>105</td>  
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -399,13 +544,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>With a focus on heuristics, our Kindergarten 2 Maths programme will equip your child with the knowledge and skills to solve word problems and lay a firm foundation in number concepts to prepare them for primary school.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$140.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>  
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>101 Thomson Road, #03-03, United Square, Singapore 307591<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -414,13 +559,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>With a focus on heuristics, our Kindergarten 2 Maths programme will equip your child with the knowledge and skills to solve word problems and lay a firm foundation in number concepts to prepare them for primary school.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$140.00</td>
                 <td>Central</td>
+                <td>10</td>
+                <td>105</td>  
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>11 Bidadari Park Drive, The Woodleigh Mall, Singapore 367803<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -429,13 +574,13 @@
                 <td>The Learning Lab</td>
                 <td>Mathematics</td>
                 <td>With a focus on heuristics, our Kindergarten 2 Maths programme will equip your child with the knowledge and skills to solve word problems and lay a firm foundation in number concepts to prepare them for primary school.</td>
-                <td>105</td>
-                <td>10</td>
                 <td>$140.00</td>
                 <td>North-West</td>
+                <td>10</td>
+                <td>105</td>  
                 <td>Availability Mon; Wed; Fri; Sat</td>
-                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br>enquiry@thelearninglab.com.sg<br>thelearninglab.com.sg</td>
-                <td>Email to schedule a trial class</td>
+                <td>309 Choa Chu Kang Ave 4, Choa Chu Kang Centre, #05-03, Singapore 690309<br>+65 6733 8711<br><br>thelearninglab.com.sg</td>
+                <td><a href="mailto:enquiry@thelearninglab.com.sg">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -444,13 +589,13 @@
                 <td>Mind Strecher</td>
                 <td>Phonics and Reading</td>
                 <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>Central</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br><br>mindstretcher.com</td>
+                <td><a href="mailto:j8@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -459,13 +604,13 @@
                 <td>Mind Strecher</td>
                 <td>Phonics and Reading</td>
                 <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>West</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br><br>mindstretcher.com</td>
+                <td><a href="mailto:jurongpoint@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -474,13 +619,13 @@
                 <td>Mind Strecher</td>
                 <td>Phonics and Reading</td>
                 <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>Central</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br><br>mindstretcher.com</td>
+                <td><a href="mailto:j8@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -489,13 +634,13 @@
                 <td>Mind Strecher</td>
                 <td>Phonics and Reading</td>
                 <td>From three and a half years old, pre-schoolers can join our programme starting from Budding Level, and progress through the other 4 levels – Beginner, Fluent, Proficient and Champion.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>West</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br><br>mindstretcher.com</td>
+                <td><a href="mailto:jurongpoint@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -504,13 +649,13 @@
                 <td>Mind Strecher</td>
                 <td>English P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>Central</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br><br>mindstretcher.com</td>
+                <td><a href="mailto:j8@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -519,13 +664,13 @@
                 <td>Mind Strecher</td>
                 <td>English P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>West</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br><br>mindstretcher.com</td>
+                <td><a href="mailto:jurongpoint@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -534,13 +679,13 @@
                 <td>Mind Strecher</td>
                 <td>English P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>Central</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br><br>mindstretcher.com</td>
+                <td><a href="mailto:j8@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -549,13 +694,13 @@
                 <td>Mind Strecher</td>
                 <td>English P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>West</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br><br>mindstretcher.com</td>
+                <td><a href="mailto:jurongpoint@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -564,13 +709,13 @@
                 <td>Mind Strecher</td>
                 <td>Mathematics P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>Central</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br><br>mindstretcher.com</td>
+                <td><a href="mailto:j8@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -579,13 +724,13 @@
                 <td>Mind Strecher</td>
                 <td>Mathematics P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>West</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br><br>mindstretcher.com</td>
+                <td><a href="mailto:jurongpoint@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -594,13 +739,13 @@
                 <td>Mind Strecher</td>
                 <td>Mathematics P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>Central</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br>j8@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>9 Bishan Place, Junction 8, #04-02A Singapore 579837<br>+65 6334 3066<br>+6588823170<br><br>mindstretcher.com</td>
+                <td><a href="mailto:j8@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -609,13 +754,13 @@
                 <td>Mind Strecher</td>
                 <td>Mathematics P1 Preparatory</td>
                 <td>Mind Stretcher’s Kindergarten 1 English & Mathematics programme uses topics our young ones are fond of to introduce them to basic numeracy and literacy in an exciting, enjoyable way.</td>
-                <td>60</td>
-                <td>15</td>
                 <td>$50.00</td>
                 <td>West</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability Thu; Sat; Sun</td>
-                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br>jurongpoint@mindstretcher.com<br>mindstretcher.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>63 Jurong West Central 3, Jurong Point Shopping Centre (JP2),  #B1-49 Singapore 648331<br>+65 6255 5800 / 6255 2900<br><br>mindstretcher.com</td>
+                <td><a href="mailto:jurongpoint@mindstretcher.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -623,16 +768,14 @@
                 <td>Arts</td>
                 <td>We Art</td>
                 <td>Little Explorers</td>
-                <td>A Journey of Imagination: Each class kicks off with a captivating story about famous artists, sparking creativity and imagination in our young students.
-Diverse Artistic Adventures: Children can choose from various artistic mediums – drawing, painting, collage, and mixed media, to name a few.
-Skill Development: From the beginning of each term, we introduce diverse techniques, encouraging kids to create unique artworks as they learn and grow.</td>
-                <td>90</td>
-                <td>5</td>
-                <td>$52.00</td>
+                <td>A Journey of Imagination: Each class kicks off with a captivating story about famous artists, sparking creativity and imagination in our young students. Diverse Artistic Adventures: Children can choose from various artistic mediums – drawing, painting, collage, and mixed media, to name a few. Skill Development: From the beginning of each term, we introduce diverse techniques, encouraging kids to create unique artworks as they learn and grow.</td>
+                <td>$50.00</td>
                 <td>Central</td>
+                <td>15</td>
+                <td>60</td>
                 <td>Availability shown on website</td>
-                <td>176 Orchard Road, CentrePoint, #04-02 Singapore 238843<br>+ 65 9128 9947<br>weart.sg</td>
-                <td>Book Trial Class Via Website</td>
+                <td>176 Orchard Road, CentrePoint, #04-02 Singapore 238843<br>+ 65 9128 9947<br>
+                <td><a href="http://weart.sg" target="_blank">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -643,13 +786,13 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
                 <td>A Journey of Imagination: Each class kicks off with a captivating story about famous artists, sparking creativity and imagination in our young students.
 Diverse Artistic Adventures: Children can choose from various artistic mediums – drawing, painting, collage, and mixed media, to name a few.
 Skill Development: From the beginning of each term, we introduce diverse techniques, encouraging kids to create unique artworks as they learn and grow.</td>
-                <td>90</td>
-                <td>5</td>
                 <td>$52.00</td>
                 <td>Central</td>
+                <td>5</td>
+                <td>90</td>
                 <td>Availability shown on website</td>
-                <td>176 Orchard Road, CentrePoint, #04-02 Singapore 238843<br>+ 65 9128 9947<br>weart.sg</td>
-                <td>Book Trial Class Via Website</td>
+                <td>176 Orchard Road, CentrePoint, #04-02 Singapore 238843<br>+ 65 9128 9947
+                <td><a href="http://weart.sg" target="_blank">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -658,13 +801,13 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
                 <td>White Canvas Studio</td>
                 <td>Discoverer (level 1)</td>
                 <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
-                <td>60</td>
-                <td>5</td>
-                <td>$50.00</td>
+                <td>$52.00</td>
                 <td>Central</td>
+                <td>5</td>
+                <td>90</td>
                 <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
-                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br><br>whitecanvasstudio.com</td>
+                <td><a href="mailto:hello@whitecanvasstudio.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -673,13 +816,13 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
                 <td>White Canvas Studio</td>
                 <td>Discoverer (level 1)</td>
                 <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
-                <td>60</td>
-                <td>5</td>
-                <td>$50.00</td>
+                <td>$52.00</td>
                 <td>Central</td>
+                <td>5</td>
+                <td>90</td>
                 <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
-                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br><br>whitecanvasstudio.com</td>
+                <td><a href="mailto:hello@whitecanvasstudio.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -688,13 +831,13 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
                 <td>White Canvas Studio</td>
                 <td>Discoverer (level 1)</td>
                 <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
-                <td>60</td>
-                <td>5</td>
-                <td>$50.00</td>
+                <td>$52.00</td>
                 <td>Central</td>
+                <td>5</td>
+                <td>90</td>
                 <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
-                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br><br>whitecanvasstudio.com</td>
+                <td><a href="mailto:hello@whitecanvasstudio.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -703,13 +846,13 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
                 <td>White Canvas Studio</td>
                 <td>Discoverer (level 1)</td>
                 <td>Level 1 - The Discoverer program is designed for children, the focus is on fostering creativity, honing fine motor skills, and introducing diverse artistic mediums. Throughout, the program aims to nurture a love for creativity and boost confidence in artistic expression.</td>
-                <td>60</td>
-                <td>5</td>
-                <td>$50.00</td>
+                <td>$52.00</td>
                 <td>Central</td>
+                <td>5</td>
+                <td>90</td>
                 <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
-                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br><br>whitecanvasstudio.com</td>
+                <td><a href="mailto:hello@whitecanvasstudio.com">Click here to schedule a trial class</a></td>
             </tr>
     
             <tr>
@@ -718,32 +861,67 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
                 <td>White Canvas Studio</td>
                 <td>Explorer (level 2)</td>
                 <td>Level 2 - The Explorer program is designed to provide a well-rounded artistic education, from foundational skills to advanced techniques, fostering creativity and expressive capabilities in students.</td>
-                <td>60</td>
-                <td>5</td>
-                <td>$50.00</td>
+                <td>$52.00</td>
                 <td>Central</td>
+                <td>5</td>
+                <td>90</td>
                 <td>Availability Tue; Wed; Thu; Fri; Sat; Sun</td>
-                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br>hello@whitecanvasstudio.com<br>whitecanvasstudio.com</td>
-                <td>Email to schedule a trial class</td>
+                <td>229A Upper Thomson Road Singapore 574361<br>+ 65 6560 5021<br><br>whitecanvasstudio.com</td>
+                <td><a href="mailto:hello@whitecanvasstudio.com">Click here to schedule a trial class</a></td>
             </tr>
-    
-            <tr>
-                <td>7 years</td>
-                <td>science</td>
-                <td>science tuition</td>
-                <td>science tuition</td>
-                <td>nan</td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>$nan</td>
-                <td>nan</td>
-                <td>nan</td>
-                <td>N/A</td>
-                <td>nan</td>
-            </tr>
-    
         </tbody>
     </table>
+
+    <div id="reviews-container">
+        <h4>Parent Reviews</h4>
+        <div id="reviews-list"></div>
+    </div>
+    <div class="view-reviews-section">
+        <h3>Filter Reviews by Programme</h3>
+        <label for="programme-filter">Choose a Programme:</label>
+        <select id="programme-filter" onchange="filterReviews()">
+            <option value="">Select a Programme</option>
+            <option value="I Love Reading">I Love Reading</option>
+            <option value="Let's Read and Write">Let's Read and Write</option>
+            <option value="Little Explorers">Little Explorers</option>
+            
+        </select>
+        
+        <div id="reviews-list-Let's Read and Write" class="reviews-list" style="display: none;">
+            <ul>
+                <li>"My child absolutely loves this program! Highly recommend." - Klara</li>
+                <li>"Great activities and very engaging!" - Sally</li>
+                <li>"This program has really improved my daughter's reading and writing skills. She's much more confident now!" - Elizabeth</li>
+                <li>"The mix of reading and writing activities keeps my child engaged, and it's amazing to see his progress." - Robert</li>
+            </ul>
+        </div>
+        <div id="reviews-list-I Love Reading" class="reviews-list" style="display: none;">
+            <ul>
+                <li>"Amazing program! It has helped my child improve their reading skills significantly." - Jing Han</li>
+                <li>"My daughter loves the stories and the interactive reading activities. Highly recommended for young readers!" - Jonathan</li>
+                <li>"Since joining 'I Love Reading', my son has developed a real love for books. It’s been fantastic for his confidence." - Emma</li>
+                <li>"Great curriculum and very supportive instructors. The progress my child has made is incredible." - Daniel</li>
+                <li>"This program makes reading fun! My child is always excited to share what she’s read." - Patricia</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+    function filterReviews() {
+        // Hide all reviews sections first
+        const allReviews = document.querySelectorAll('.reviews-list');
+        allReviews.forEach(review => review.style.display = 'none');
+        
+        // Get the selected programme value
+        const selectedProgramme = document.getElementById('programme-filter').value;
+    
+        // If a programme is selected, display its reviews section
+        if (selectedProgramme) {
+            document.getElementById('reviews-list-' + selectedProgramme).style.display = 'block';
+        }
+    }
+    </script>
+    
 
     <script>
         function applyFilters() {
@@ -752,6 +930,7 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
             const locationFilter = document.getElementById('location').value;
 
             const rows = document.querySelectorAll("#classes-table tbody tr");
+
             rows.forEach(row => {
                 const ageGroup = row.cells[0].textContent;
                 const type = row.cells[1].textContent;
@@ -768,7 +947,252 @@ Skill Development: From the beginning of each term, we introduce diverse techniq
                 }
             });
         }
+            function clearFilters() {
+            document.getElementById('age-group').value = "";
+            document.getElementById('type').value = "";
+            document.getElementById('location').value = "";
+            applyFilters();
+        }
+            function submitReview() {
+            const name = document.getElementById('parent-name').value;
+            const reviewText = document.getElementById('review').value;
+
+            if (name && reviewText) {
+                const reviewList = document.getElementById('reviews-list');
+                const newReview = document.createElement('li');
+                newReview.innerHTML = `<strong>${name}:</strong> ${reviewText}`;
+                reviewList.appendChild(newReview);
+
+                // Clear the form
+                document.getElementById('review-form').reset();
+
+                // Show a success notification
+                showNotification('Thank you for your review!');
+            } else {
+                showNotification('Please fill in all fields before submitting.');
+            }
+        }
+            function submitReview() {
+            const programme = document.getElementById('programme').value;
+            const name = document.getElementById('parent-name').value;
+            const reviewText = document.getElementById('review').value;
+
+            if (programme && name && reviewText) {
+                let reviewList = document.getElementById(`reviews-list-${programme}`);
+                if (!reviewList) {
+                    reviewList = document.createElement('ul');
+                    reviewList.id = `reviews-list-${programme}`;
+                    reviewList.className = 'reviews-list';
+                    const programmeReviewsContainer = document.createElement('div');
+                    programmeReviewsContainer.innerHTML = `<h5>Reviews for ${programme}</h5>`;
+                    programmeReviewsContainer.appendChild(reviewList);
+                    document.getElementById('reviews-list').appendChild(programmeReviewsContainer);
+                }
+                const newReview = document.createElement('li');
+                newReview.innerHTML = `<strong>${name}:</strong> ${reviewText}`;
+                reviewList.appendChild(newReview);
+
+                // Clear the form
+                document.getElementById('review-form').reset();
+
+                // Show a success notification
+                showNotification('Thank you for your review!');
+            } else {
+                showNotification('Please fill in all fields before submitting.');
+            }
+        }
+            function submitReview() {
+            const programme = document.getElementById('programme').value;
+            const name = document.getElementById('parent-name').value;
+            const reviewText = document.getElementById('review').value;
+
+            if (programme && name && reviewText) {
+                let reviewList = document.getElementById(`reviews-list-${programme}`);
+                if (!reviewList) {
+                    reviewList = document.createElement('ul');
+                    reviewList.id = `reviews-list-${programme}`;
+                    reviewList.className = 'reviews-list';
+                    const programmeReviewsContainer = document.createElement('div');
+                    programmeReviewsContainer.innerHTML = `<h5>Reviews for ${programme}</h5>`;
+                    programmeReviewsContainer.appendChild(reviewList);
+                    document.getElementById('reviews-list').appendChild(programmeReviewsContainer);
+                }
+                const newReview = document.createElement('li');
+                newReview.innerHTML = `<strong>${name}:</strong> ${reviewText}`;
+                reviewList.appendChild(newReview);
+
+                // Clear the form
+                document.getElementById('review-form').reset();
+
+                // Show a success notification
+                showNotification('Thank you for your review!');
+            } else {
+                showNotification('Please fill in all fields before submitting.');
+            }
+        }
+
+        function toggleReviews(programme) {
+            const reviewsDiv = document.getElementById(`reviews-list-${programme}`);
+            if (reviewsDiv) {
+                reviewsDiv.style.display = (reviewsDiv.style.display === 'none' || reviewsDiv.style.display === '') ? 'block' : 'none';
+            }
+        }
     </script>
+    <script>
+        function applyFilters() {
+            const ageGroupFilter = document.getElementById('age-group').value;
+            const typeFilter = document.getElementById('type').value;
+            const locationFilter = document.getElementById('location').value;
+
+            const rows = document.querySelectorAll("#classes-table tbody tr");
+
+            rows.forEach(row => {
+                const ageGroup = row.cells[0].textContent;
+                const type = row.cells[1].textContent;
+                const location = row.cells[8].textContent;
+
+                const ageGroupMatch = ageGroupFilter === "" || ageGroup === ageGroupFilter;
+                const typeMatch = typeFilter === "" || type === typeFilter;
+                const locationMatch = locationFilter === "" || location === locationFilter;
+
+                if (ageGroupMatch && typeMatch && locationMatch) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const contactLinks = document.querySelectorAll('a[href^="mailto:"]');
+            contactLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    alert('You are about to send an email! Make sure to include all the important details so we can help you as best as we can.');
+                });
+            });
+        });
+
+        function highlightRows() {
+            const rows = document.querySelectorAll("#classes-table tbody tr");
+            rows.forEach(row => {
+                row.addEventListener('mouseover', () => {
+                    row.style.backgroundColor = '#f0f8ff';
+                });
+                row.addEventListener('mouseout', () => {
+                    row.style.backgroundColor = '';
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', highlightRows);
+    </script>
+    <script>
+        function applyFilters() {
+            const ageGroupFilter = document.getElementById('age-group').value;
+            const typeFilter = document.getElementById('type').value;
+            const locationFilter = document.getElementById('location').value;
+
+            const rows = document.querySelectorAll("#classes-table tbody tr");
+
+            rows.forEach(row => {
+                const ageGroup = row.cells[0].textContent;
+                const type = row.cells[1].textContent;
+                const location = row.cells[8].textContent;
+
+                const ageGroupMatch = ageGroupFilter === "" || ageGroup === ageGroupFilter;
+                const typeMatch = typeFilter === "" || type === typeFilter;
+                const locationMatch = locationFilter === "" || location === locationFilter;
+
+                if (ageGroupMatch && typeMatch && locationMatch) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const contactLinks = document.querySelectorAll('a[href^="mailto:"]');
+            contactLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    alert('You are about to send an email. Please make sure to include relevant information.');
+                });
+            });
+        });
+
+        function highlightRows() {
+            const rows = document.querySelectorAll("#classes-table tbody tr");
+            rows.forEach(row => {
+                row.addEventListener('mouseover', () => {
+                    row.style.backgroundColor = '#f0f8ff';
+                });
+                row.addEventListener('mouseout', () => {
+                    row.style.backgroundColor = '';
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', highlightRows);
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById("classes-table");
+            const tbody = table.tBodies[0];
+            const rows = Array.from(tbody.rows);
+            const ascending = tbody.getAttribute('data-sort-asc') === 'true';
+
+            rows.sort((a, b) => {
+                const aText = a.cells[columnIndex].textContent.trim().toLowerCase();
+                const bText = b.cells[columnIndex].textContent.trim().toLowerCase();
+                if (aText < bText) return ascending ? -1 : 1;
+                if (aText > bText) return ascending ? 1 : -1;
+                return 0;
+            });
+
+            rows.forEach(row => tbody.appendChild(row));
+            tbody.setAttribute('data-sort-asc', !ascending);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const headers = document.querySelectorAll("#classes-table th");
+            headers.forEach((header, index) => {
+                header.style.cursor = 'pointer';
+                header.addEventListener('click', () => {
+                    sortTable(index);
+                });
+            });
+        });
+
+        function showNotification(message, timeout = 3000) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, timeout);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const applyFilterButton = document.querySelector('button[onclick="applyFilters()"]');
+            applyFilterButton.addEventListener('click', () => {
+                showNotification('Filters applied successfully!');
+            });
+        });
+    </script>
+    <style>
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+        }
+    </style>
 </body>
 </html>
 

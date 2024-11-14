@@ -1,0 +1,31 @@
+<div class="review-section">
+    <h3>Leave a Review for a Programme</h3>
+    <form id="review-form">
+        <label for="programme">Select Programme:</label><br>
+        <select id="programme" name="programme" required>
+            <option value="">Select Programme</option>
+        <option value="Let's Read and Write">Let's Read and Write</option>
+        <option value="Little Explorers">Little Explorers</option>
+        </select><br><br>
+
+        <label for="parent-name">Name:</label><br>
+        <input type="text" id="parent-name" name="parent-name" required><br><br>
+
+        <label for="age-group">Age of Child: </label><br>
+
+        <input type="text" id="age-group" name="age-group" required><br><br>
+
+        <label for="Location">Location:</label><br>
+        <input type="text" id="location" name="Location" required><br><br>
+
+        <label for="review">Your Review:</label><br>
+        <textarea id="review" name="review" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="button" onclick="submitReview()">Submit Review</button>
+    </form>
+
+    <div id="reviews-container">
+        <h4>Parent Reviews</h4>
+        <div id="reviews-list"></div>
+    </div>
+</div>
